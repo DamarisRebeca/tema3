@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3</title>
+    
+</head>
+<body>
+    <h1>Configurare Laptop</h1>
+
+    <label for="ram">Memoria RAM</label>
+    <input type="number" id="ram" placeholder="Introduceti pret RAM">
+    <br><br>
+
+    <label for="display">Rezolutie display</label>
+    <input type="number" id="display" placeholder="Introduceti pret display">
+    <br><br>
+    
+    <label for="HADD">HDD</label>
+    <input type="number" id="hdd" placeholder="Introduceti pret hdd">
+    <br><br>
+    
+    <label for="Procesor">Model procesor</label>
+    <input type="number"id=procesor placeholder="Introduceti pret procesor">
+    <br><br>
+
+    <label for="os">Sistem de operare</label>
+    <input type="number" id="os" placeholder="Intruduceti pret os">
+    <br><br>
+
+    <label for="Producator">Producator</label>
+    <input type="number" id="Producator" placeholder="Introdu producatorul">
+    <br><br>
+
+    <button id="calculPret" disabled>Calculeaza pretul</button>
+    <div id="rezultat">
+    </div>
+
+    <script>
+       let leptop={
+        ram:"",
+        display:"",
+        hdd:"",
+        procesor:"",
+        year:"",
+
+        //Calculare pret total
+        calculeazaPretTotal: function(){
+            this.ram=document.getElementById("ram").value
+            this.display = document.getElementById("display").value
+            
+        }
+
+       } 
+    </script>
+
+</body>
+</html>
