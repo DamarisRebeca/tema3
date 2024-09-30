@@ -4,57 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema 3</title>
-    
+    <style>
+        .low-price{color:green;}
+        .high-price{ color: orange;}
+        .recent{color: red;}
+        .old{color: blue;}
+    </style>
 </head>
 <body>
     <h1>Configurare Laptop</h1>
-
-    <label for="ram">Memoria RAM</label>
-    <input type="number" id="ram" placeholder="Introduceti pret RAM">
+    <b style="font-size: 20px;">Memorie RAM</b>
+    <br><br>
+    <label for="capRam">Capacitate memorie RAM</label>
+    <input type="text" id="capRam" placeholder="Introduceti model RAM">
+    <br><br>
+    <label for="anFabricatieRAM">An fabricatie RAM</label>
+    <input type="number" id="anFabricatieRam" placeholder="Introduceti an fabricatie">
+    <br><br>
+    <label for="pretRam">Memoria RAM</label>
+    <input type="number" id="pretRam" placeholder="Introduceti pret RAM">
     <br><br>
 
-    <label for="display">Rezolutie display</label>
-    <input type="number" id="display" placeholder="Introduceti pret display">
+    <b style="font-size: 20px;">Display</b>
     <br><br>
-    
-    <label for="HADD">HDD</label>
-    <input type="number" id="hdd" placeholder="Introduceti pret hdd">
+    <label for="modelDisplay">Rezolutie display</label>
+    <input type="text" id="modelDisplay" placeholder="Introduceti rezolutie display">
     <br><br>
-    
-    <label for="Procesor">Model procesor</label>
-    <input type="number"id=procesor placeholder="Introduceti pret procesor">
+    <label for="anFabricatieDisplay">An fabricatie display</label>
+    <input type="number" id="anFabricatieDisplay" placeholder="Introduceti an fabricatie">
+    <br><br>
+    <label></label>
+    <label for="pretDisplay">Pret display</label>
+    <input type="number" id="pretDisplay" placeholder="Introduceti pret display">
     <br><br>
 
+    <b style="font-size: 20px;">HDD</b>
+    <br><br>
+    <label for="capacitateHadd">Capacitate HDD</label>
+    <input type="text" id="capacitateHadd" placeholder="Introduceti capacitate HDD">
+    <br><br>
+    <label for="anFabricatieHDD">An fabricaatie HDD</label>
+    <input type="number" id="anFabricatieHDD"placeholder="Introduceti an fabricatie">
+    <br><br>
+    <label for="pretHdd">HDD</label>
+    <input type="number" id="pretHdd" placeholder="Introduceti pret hdd">
+    <br><br>
+
+    <b style="font-size: 20px;">Procesor</b>
+    <br><br>
+    <label for="modelProcesor">Model procesor</label>
+    <input type="text" id="modelProcesor" placeholder="Introduceti model procesor">
+    <br><br>
+    <label for="anFabricatieProcesor">An fabricatie procesor</label>
+    <input type="number" id="anFabricatieProcesor" placeholder="Introduceti an fabricatie">
+    <br><br>
+    <label for="pretProcesor">Pret procesor</label>
+    <input type="number"id=pretProcesor placeholder="Introduceti pret procesor">
+    <br><br>
+
+    <b style="font-size: 20px;">Sistem de operare</b>
+    <br><Br>
     <label for="os">Sistem de operare</label>
-    <input type="number" id="os" placeholder="Intruduceti pret os">
+    <input type="text" id="os" placeholder="Intruduceti  os">
+    <br><br>
+    <b style="font-size: 20px;">Producator</b>
     <br><br>
 
     <label for="Producator">Producator</label>
-    <input type="number" id="Producator" placeholder="Introdu producatorul">
+    <input type="text" id="Producator" placeholder="Introdu producatorul">
     <br><br>
 
-    <button id="calculPret" disabled>Calculeaza pretul</button>
+    <button id="calculPret" onclick="leptop.calculeazaPretTotal()" >Calculeaza pretul</button>
     <div id="rezultat">
     </div>
 
     <script>
-       let leptop={
-        ram:"",
-        display:"",
-        hdd:"",
-        procesor:"",
-        year:"",
+       let laptop={
+        memorie_ram:{
+            pretRam:0,
+            capRam:0,
+            anFabricatieRam:0,
+        },
+        display:{
+            pretDisplay:0,
+            modelDisplay:0,
+            anFabricatieDisplay:0,
+        },
+        hdd:{
+            pretHdd:0,
+            capacitateHadd:0,
+            anFabricatieHadd:0,
+        },
+        procesor:{
+            pretProcesor:0,
+            modelProcesor:0,
+            anFabricatieProcesor:0,
+        },
+        producator:"",
+        os:"",
+        
 
         //Calculare pret total
         calculeazaPretTotal: function(){
-            this.ram=document.getElementById("ram").value
-            this.display = document.getElementById("display").value
-            this.hdd = document.getElementById("add").value
-            this.procesor=document.getElementById("procesor").value
-            this.year=document.getElementById("year").value
-        }
+            this.pretRam=document.getElementById("pretRam").value;
+            this.pretdDisplay =document.getElementById("pretDisplay").value;
+            this.pretHdd = document.getElementById("pretHdd").value;
+            this.pretProcesor=document.getElementById("pretProcesor").value;
 
+            this.capRam=document.getElementById("capRam").value
+            this.modelDisplay=document.getElementById("modelDisplay").value
+            this.capacitateHadd=document.getElementById("capacitateHadd").value
+            this.modelProcesordocument.getElementById("modelProcesor").value
+
+            this.anFabricatieRam=document.getAnimations("anFabricatieRam").value
+            this.anFabricatieDisplay=document.getElementById("anFabricatieDisplay").value
+            this.anFabricatieHadd=document.getElementById("anFabricatieHadd").value
+            this.anFabricatieProcesor=document.getElementById("anFabricatieProcesor").value
+           
+            let sumaT=Number.parseInt( this.pretRam) +Number.parseInt( this.display) + Number.parseInt( this.pretHdd)+ Number.parseInt( this.procesorPret)
+            alert(sumaT)
+
+            if(sumaT <400){
+                rezul
+            }
+        }
        } 
+
+        
+
+       
     </script>
 
 </body>
