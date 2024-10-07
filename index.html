@@ -4,81 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema 3</title>
-    <style>
-        .low-price{color:green;}
-        .high-price{ color: orange;}
-        .recent{color: red;}
-        .old{color: blue;}
-    </style>
+   
+  
 </head>
 <body>
     <h1>Configurare Laptop</h1>
     <b style="font-size: 20px;">Memorie RAM</b>
     <br><br>
     <label for="capRam">Capacitate memorie RAM</label>
-    <input type="text" id="capRam" placeholder="Introduceti model RAM">
+    <input type="text" id="capRam" placeholder="Introduceti model RAM" oninput="activareButon()">
     <br><br>
     <label for="anFabricatieRAM">An fabricatie RAM</label>
-    <input type="number" id="anFabricatieRam" placeholder="Introduceti an fabricatie">
+    <input type="number" id="anFabricatieRam" placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
-    <label for="pretRam">Memoria RAM</label>
-    <input type="number" id="pretRam" placeholder="Introduceti pret RAM">
+    <label for="pretRam">Pret RAM</label>
+    <input type="number" id="pretRam" placeholder="Introduceti pret RAM" oninput="activareButon()">
     <br><br>
 
     <b style="font-size: 20px;">Display</b>
     <br><br>
     <label for="modelDisplay">Rezolutie display</label>
-    <input type="text" id="modelDisplay" placeholder="Introduceti rezolutie display">
+    <input type="text" id="modelDisplay" placeholder="Introduceti rezolutie display" oninput="activareButon()">
     <br><br>
     <label for="anFabricatieDisplay">An fabricatie display</label>
-    <input type="number" id="anFabricatieDisplay" placeholder="Introduceti an fabricatie">
+    <input type="number" id="anFabricatieDisplay" placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
     <label></label>
     <label for="pretDisplay">Pret display</label>
-    <input type="number" id="pretDisplay" placeholder="Introduceti pret display">
+    <input type="number" id="pretDisplay" placeholder="Introduceti pret display" oninput="activareButon()">
     <br><br>
 
     <b style="font-size: 20px;">HDD</b>
     <br><br>
-    <label for="capacitateHadd">Capacitate HDD</label>
-    <input type="text" id="capacitateHadd" placeholder="Introduceti capacitate HDD">
+    <label for="capacitateHDD">Capacitate HDD</label>
+    <input type="text" id="capacitateHDD" placeholder="Introduceti capacitate HDD" oninput="activareButon()">
     <br><br>
     <label for="anFabricatieHDD">An fabricaatie HDD</label>
-    <input type="number" id="anFabricatieHDD"placeholder="Introduceti an fabricatie">
+    <input type="number" id="anFabricatieHDD"placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
-    <label for="pretHdd">HDD</label>
-    <input type="number" id="pretHdd" placeholder="Introduceti pret hdd">
+    <label for="pretHDD">HDD</label>
+    <input type="number" id="pretHDD" placeholder="Introduceti pret hdd" oninput="activareButon()">
     <br><br>
 
     <b style="font-size: 20px;">Procesor</b>
     <br><br>
     <label for="modelProcesor">Model procesor</label>
-    <input type="text" id="modelProcesor" placeholder="Introduceti model procesor">
+    <input type="text" id="modelProcesor" placeholder="Introduceti model procesor" oninput="activareButon()">
     <br><br>
     <label for="anFabricatieProcesor">An fabricatie procesor</label>
-    <input type="number" id="anFabricatieProcesor" placeholder="Introduceti an fabricatie">
+    <input type="number" id="anFabricatieProcesor" placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
     <label for="pretProcesor">Pret procesor</label>
-    <input type="number"id=pretProcesor placeholder="Introduceti pret procesor">
+    <input type="number"id=pretProcesor placeholder="Introduceti pret procesor" oninput="activareButon()">
     <br><br>
 
     <b style="font-size: 20px;">Sistem de operare</b>
-    <br><Br>
+    <br><br>
     <label for="os">Sistem de operare</label>
-    <input type="text" id="os" placeholder="Intruduceti  os">
+    <input type="text" id="os" placeholder="Intruduceti  os" oninput="activareButon()">
     <br><br>
     <b style="font-size: 20px;">Producator</b>
     <br><br>
 
-    <label for="Producator">Producator</label>
-    <input type="text" id="Producator" placeholder="Introdu producatorul">
+    <label for="producator">Producator</label>
+    <input type="text" id="producator" placeholder="Introdu producatorul" oninput="activareButon()">
     <br><br>
 
-    <button id="calculPret" onclick="leptop.calculeazaPretTotal()" >Calculeaza pretul</button>
+    <button id="calculPret" onclick="laptop.calculeazaPretTotal()" disabled>Calculeaza pretul</button>
     <div id="rezultat">
+         <p id="rezultat2"></p>
     </div>
 
     <script>
+        function activareButon(){
+            let lungime_input1=document.getElementById("pretRam").value.length
+            let lungime_input2=document.getElementById("pretDisplay").value.length
+            let lungime_input3=document.getElementById("pretHDD").value.length
+            let lungime_input4=document.getElementById("pretProcesor").value.length
+            if(lungime_input1> 0 && lungime_input2> 0 && lungime_input3> 0 && lungime_input4> 0){
+               document.getElementById("calculPret").disabled=false;
+         }else {
+                document.getElementById("calculPret").disabled=true;
+            }
+       }
        let laptop={
         memorie_ram:{
             pretRam:0,
@@ -91,7 +99,7 @@
             anFabricatieDisplay:0,
         },
         hdd:{
-            pretHdd:0,
+            pretHDD:0,
             capacitateHadd:0,
             anFabricatieHadd:0,
         },
@@ -102,34 +110,48 @@
         },
         producator:"",
         os:"",
+
+ 
         
 
         //Calculare pret total
-        calculeazaPretTotal: function(){
-            this.pretRam=document.getElementById("pretRam").value;
-            this.pretdDisplay =document.getElementById("pretDisplay").value;
-            this.pretHdd = document.getElementById("pretHdd").value;
-            this.pretProcesor=document.getElementById("pretProcesor").value;
+        procesare: function(){
+            this.pretRam=Number(document.getElementById("pretRam").value);
+            this.pretDisplay =Number(document.getElementById("pretDisplay").value);
+            this.pretHDD = Number(document.getElementById("pretHDD").value);
+            this.pretProcesor=Number(document.getElementById("pretProcesor").value);
 
             this.capRam=document.getElementById("capRam").value
-            this.modelDisplay=document.getElementById("modelDisplay").value
-            this.capacitateHadd=document.getElementById("capacitateHadd").value
-            this.modelProcesordocument.getElementById("modelProcesor").value
+            this.modelDisplay=document.getElementById("modelDisplay").value;
+            this.capacitateHDD=document.getElementById("capacitateHDD").value;
+            this.modelProcesor=document.getElementById("modelProcesor").value;
 
-            this.anFabricatieRam=document.getAnimations("anFabricatieRam").value
-            this.anFabricatieDisplay=document.getElementById("anFabricatieDisplay").value
-            this.anFabricatieHadd=document.getElementById("anFabricatieHadd").value
-            this.anFabricatieProcesor=document.getElementById("anFabricatieProcesor").value
+            this.anFabricatieRam=document.getElementById("anFabricatieRam").value;
+            this.anFabricatieDisplay=document.getElementById("anFabricatieDisplay").value;
+            this.anFabricatieHDD=document.getElementById("anFabricatieHDD").value;
+            this.anFabricatieProcesor=document.getElementById("anFabricatieProcesor").value;
+
+            this.producator=document.getElementById("producator").value
+            this.os=document.getElementById("os").value
            
-            let sumaT=Number.parseInt( this.pretRam) +Number.parseInt( this.display) + Number.parseInt( this.pretHdd)+ Number.parseInt( this.procesorPret)
+            let sumaT=Number.parseInt( this.pretRam) +Number.parseInt( this.pretDisplay) + Number.parseInt( this.pretHDD)+ Number.parseInt( this.pretProcesor)
             alert(sumaT)
-
             if(sumaT <400){
-                2
+                document.getElementById("rezultat").innerHTML='pretul este verde'
+            }else{
+                document.getElementById("rezultat").innerHTML='pretul este rosu'
             }
-        }
-       } 
+            console.log(sumaT);
+            //this.afiseaza(sumaT); 
+        },
+       
+        
+    }
+            
+    function afiseaza(){
 
+    }
+       
         
 
        
