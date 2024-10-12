@@ -71,6 +71,7 @@
     <br><br>
 
     <button id="calculPret" onclick="laptop.procesare()" disabled>Calculeaza pretul</button>
+    <button id="afiseaza" onclick="afiseaza()">Afiseaza</button>
     <div id="rezultat">
          <p id="rezultat2"></p>
     </div>
@@ -154,7 +155,7 @@
             
     function afiseaza (){
         let print = document.getElementById("rezultat2");
-        let sumaTotal= document.getElementById("rezultat");
+        let sumaT= document.getElementById("rezultat");
         rezultat.innerHTML= 'Pret total' + sumaT
         if (sumaT<400){
             rezultat.style.color = 'green';
@@ -172,13 +173,13 @@
     let suma_an3 = an1 + an3 + an4;
     let suma_an4 = an2 + an3 + an4;
     
-    let print=document.getElementById("rezultat2");
+    //let print=document.getElementById("rezultat2");
 
-    if( suma_an1 === 6072 || suma_an2 === 6072 || suma_an3 === 6072 || suma_an4 === 6072){
+    /**if( suma_an1 === 6072 || suma_an2 === 6072 || suma_an3 === 6072 || suma_an4 === 6072){
         print.style.color = 'red';
     }else{
         print.style.color = 'blue';
-    }
+    }**/
        
         print.innerHTML=
         'Producator:' +laptop.producator + '<br><br>' + 
@@ -201,7 +202,7 @@
         +'Pret:' +laptop.pretProcesor + '<br><br>';
        
     </script>
-    2
+    
 
 </body>
 </html>
