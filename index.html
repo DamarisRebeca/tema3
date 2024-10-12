@@ -15,7 +15,7 @@
     <input type="text" id="capRam" placeholder="Introduceti model RAM" oninput="activareButon()">
     <br><br>
     <label for="anFabricatieRAM">An fabricatie RAM</label>
-    <input type="number" id="anFabricatieRam" placeholder="Introduceti an fabricatie" oninput="activareButon()">
+    <input type="number" id="anFabricatieRAM" placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
     <label for="pretRam">Pret RAM</label>
     <input type="number" id="pretRam" placeholder="Introduceti pret RAM" oninput="activareButon()">
@@ -29,7 +29,7 @@
     <label for="anFabricatieDisplay">An fabricatie display</label>
     <input type="number" id="anFabricatieDisplay" placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
-    <label></label>
+ 
     <label for="pretDisplay">Pret display</label>
     <input type="number" id="pretDisplay" placeholder="Introduceti pret display" oninput="activareButon()">
     <br><br>
@@ -42,7 +42,7 @@
     <label for="anFabricatieHDD">An fabricaatie HDD</label>
     <input type="number" id="anFabricatieHDD"placeholder="Introduceti an fabricatie" oninput="activareButon()">
     <br><br>
-    <label for="pretHDD">HDD</label>
+    <label for="pretHDD">Pret HDD</label>
     <input type="number" id="pretHDD" placeholder="Introduceti pret hdd" oninput="activareButon()">
     <br><br>
 
@@ -70,7 +70,7 @@
     <input type="text" id="producator" placeholder="Introdu producatorul" oninput="activareButon()">
     <br><br>
 
-    <button id="calculPret" onclick="laptop.calculeazaPretTotal()" disabled>Calculeaza pretul</button>
+    <button id="calculPret" onclick="laptop.procesare()" disabled>Calculeaza pretul</button>
     <div id="rezultat">
          <p id="rezultat2"></p>
     </div>
@@ -91,7 +91,7 @@
         memorie_ram:{
             pretRam:0,
             capRam:0,
-            anFabricatieRam:0,
+            anFabricatieRAM:0,
         },
         display:{
             pretDisplay:0,
@@ -100,8 +100,8 @@
         },
         hdd:{
             pretHDD:0,
-            capacitateHadd:0,
-            anFabricatieHadd:0,
+            capacitateHDD:0,
+            anFabricatieHDD:0,
         },
         procesor:{
             pretProcesor:0,
@@ -126,7 +126,7 @@
             this.capacitateHDD=document.getElementById("capacitateHDD").value;
             this.modelProcesor=document.getElementById("modelProcesor").value;
 
-            this.anFabricatieRam=document.getElementById("anFabricatieRam").value;
+            this.anFabricatieRRAM=document.getElementById("anFabricatieRAM").value;
             this.anFabricatieDisplay=document.getElementById("anFabricatieDisplay").value;
             this.anFabricatieHDD=document.getElementById("anFabricatieHDD").value;
             this.anFabricatieProcesor=document.getElementById("anFabricatieProcesor").value;
@@ -135,11 +135,15 @@
             this.os=document.getElementById("os").value
            
             let sumaT=Number.parseInt( this.pretRam) +Number.parseInt( this.pretDisplay) + Number.parseInt( this.pretHDD)+ Number.parseInt( this.pretProcesor)
-            alert(sumaT)
+           // alert(sumaT)
+           let rezultat=document.getElementById("rezultat");
             if(sumaT <400){
-                document.getElementById("rezultat").innerHTML='pretul este verde'
+                rezultat.innerHTML='pretul este sub 400';
+                rezultat.style.color = 'green'
             }else{
-                document.getElementById("rezultat").innerHTML='pretul este rosu'
+                rezultat.inert = 'pretul total este peste 400';
+                rezultat.style.color = 'red'
+        
             }
             console.log(sumaT);
             //this.afiseaza(sumaT); 
@@ -148,12 +152,53 @@
         
     }
             
-    function afiseaza(){
+    function afiseaza (){
+        let print = document.getElementById("rezultat2");
+        let sumaTotal= document.getElementById("rezultat");
+        rezultat.innerHTML= 'Pret total' + sumaT
+        if (sumaT<400){
+            rezultat.style.color = 'green';
+        }else{
+            rezultat.style.color = 'red';
+        }
+    }
+    let an1 = laptop.anFabricatieRAM;
+    let an2 = laptop.anFabricatieDisplay;
+    let an3 = laptop.anFabricatieHadd;
+    let an4 = laptop.anFabricatieProcesor;
 
+    let suma_an1 = an1 + an2 + an3;
+    let suma_an2 = an1 + an2 + an4;
+    let suma_an3 = an1 + an3 + an4;
+    let suma_an4 = an2 + an3 + an4;
+    
+    let print=document.getElementById("rezultat2");
+
+    if( suma_an1 === 6072 || suma_an2 === 6072 || suma_an3 === 6072 || suma_an4 === 6072){
+        print.style.color = 'red';
+    }else{
+        print.style.color = 'blue';
     }
        
-        
-
+        print.innerHTML=
+        'Producator:' +laptop.producator + '<br><br>' + 
+        'Sistem de operare:' + laptop.os + '<br><br>'
+     +'Memorie RAM' + '<br><br>'
+        +'Capacitate memorie RAM:' + laptop.memorie_ram +'<br><br>'
+        +'Pret'+ laptop.pretRam + '<br><br>'
+        +'An fabricatie:' +laptop.anFabricatieRAM +'<BR><BR>'
+     +'Display:' +'<br><br>'
+        +'Rezolutie' + laptop.modelDisplay + '<br><br>'
+        +'An fabricatie:' + laptop.anFabricatieDisplay + '<br><br>' 
+        +'Pret'+ laptop.pretDisplay + '<br><br>'
+    +'HardDisk:' + '<br><br>'
+        +'Capacitate HDD' + laptop.capacitateHDD + '<br><br>'
+        +'An fabricatie' + laptop.anFabricatieHDD +'<br><br>'
+        +'Pret HDD' + laptop.pretHDD +'<br><br>'
+    +'Procesor' + '<br><br>'
+        +'Model procesor' + laptop.modelProcesor +'<br><br>'
+        +'An fabricatie hdd:' +laptop.anFabricatieProcesor + '<br><br>'
+        +'Pret:' +laptop.pretProcesor + '<br><br>';
        
     </script>
 
